@@ -1,5 +1,6 @@
 #include "Sorting.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -7,30 +8,32 @@ Sorting::Sorting() {
     comps = 0;
 } //constructor
 
-long int Sorting::SelecSort(int data[], int first, int last) {
+long long int Sorting::SelecSort(int data[], int first, int last) {
   int min;
+  long long int out = 0;
   for (int i = first; i <= last; i ++) {
     min = i;
     for (int j = i+1; j <= last; j++) {
       if (data[j] < data[min]) {
 	min = j;
       } //if
-      comps++;
+      out++;
     } //for
-    swap(&data[min], &data[i]);
+    swap(data[min], data[i]);
   } //for
-  return comps;
+  return out;
 } //SelecSort()
 
 int Sorting::MergeSort(int data[], int first, int last) {
     if (last > first) {
         int half = first + (last-first)/2;
-        cout << half << endl;
         MergeSort(data, first, half);
         MergeSort(data, half+1, last);
         Merge(data, first, half, last);
     }
-    return comps;
+    int temp = comps;
+    comps = 0;
+    return temp;
 } //MergeSort()
 
 void Sorting::Merge(int data[], int first, int half, int last) {
@@ -73,17 +76,17 @@ void Sorting::Merge(int data[], int first, int half, int last) {
 //heapsort method and heapify helper inspired by Programiz.com
 int Sorting::HeapSort(int data[], int first, int last) {
   int start = (last - first + 1)/2 - 1;
-  int count = 0;
   for (int i = start; i >= first; i--) {
     heapify(data, first, last, i);
-    count ++;
-  } //for
-  for (int i = last; i >= first; i--) {
-    swap(&data[first], &data[i]);
-    heapify(data, first, (i - 1), first);
   } //for
   
-  return comps;
+  for (int i = last; i >= first; i--) {
+    swap(data[first], data[i]);
+    heapify(data, first, (i - 1), first);
+  } //for
+  int temp = comps;
+  comps = 0;
+  return temp;
 } //HeapSort()
 
 int Sorting::QuickSortF(int data[], int first, int last) {
@@ -93,7 +96,9 @@ int Sorting::QuickSortF(int data[], int first, int last) {
         QuickSortF(data, first, splitPoint-1);
         QuickSortF(data, splitPoint+1, last);
     }
-    return comps;
+    int temp = comps;
+    comps = 0;
+    return temp;
 } //QuickSortF()
 
 int Sorting::QuickSortR(int data[], int first, int last) {
@@ -103,7 +108,9 @@ int Sorting::QuickSortR(int data[], int first, int last) {
         QuickSortR(data, first, splitPoint-1);
         QuickSortR(data, splitPoint+1, last);
     }
-    return comps;
+    int temp = comps;
+    comps = 0;
+    return temp;
 } //QuickSortR()
 
 int Sorting::SplitF(int data[], int first, int last) {
@@ -171,11 +178,11 @@ int Sorting::SplitR(int data[], int first, int last) {
 } // SplitR()
 
 
-void Sorting::swap(int *num1, int *num2) {
+void Sorting::swap(int &num1, int &num2) {
 
-  int temp = *num1;
-  *num1 = *num2;
-  *num2 = temp;
+  int temp = num1;
+  num1 = num2;
+  num2 = temp;
   
 } //swap
 
@@ -196,7 +203,7 @@ void Sorting::heapify(int data[], int first, int last, int current) {
   } //if
 
   if (largest != current) {
-    swap(&data[current], &data[largest]);
+    swap(data[current], data[largest]);
     heapify(data, first, last, largest);
   } //if
   
