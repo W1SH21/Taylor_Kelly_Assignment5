@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
         for (int count2 = first; count2 <= last; count2++) {
             cout << data[count2] << " ";
         } // print the sorted array
-        cout << endl;
+	cout << endl;
         cout << "#Selection-sort comparisons: " << calc << endl;
     } else if (input == "m") {
         cout << "check343" << endl;
