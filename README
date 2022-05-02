@@ -1,0 +1,25 @@
+Contributors:
+	Benjamin Taylor (bdt75522)
+	Samuel Kelly (stk67461)
+
+
+make instructions:
+     "make": compiles both drivers (main and selectSize)
+     "make clean": removes compiled artifacts (executables and object files)
+
+drivers:
+    main:
+	reads array data from a file specified in argc
+	(behavior specified in the first part of the project instructions)
+
+    selectSize:
+	prompts user for an array size and weather to display the sorted arrays, and the sorting algorithm to be used
+	populates array with pseudorandom values and runs the chosen sort
+	calculates comparisons made over 10 different random arrays, computes average, and displays all data
+	if the user chose to display the sorted arrays, comparison data is displayed last
+
+
+acknowledgements:
+	Taylor:
+	    Heap sort inspired by an algorithm found on Programmiz.com
+	

@@ -39,9 +39,9 @@ int main() {
 
   random_device device;
   mt19937 rng(device());
-  uniform_int_distribution<int> dist(0, 1000000);
-  long long int avgSize = 10;
-  int counts[10];
+  uniform_int_distribution<int> dist(0, size);
+  long long int avgSize = 1;
+  int counts[1];
   
   if (input == "s") {
     int avg = 0;

@@ -24,16 +24,21 @@ long long int Sorting::SelecSort(int data[], int first, int last) {
   return out;
 } //SelecSort()
 
+int Sorting::MergeSortRecurse(int data[], int first, int last) {
+  if (last > first) {
+    int half = first + (last-first)/2;
+    MergeSortRecurse(data, first, half);
+    MergeSortRecurse(data, half+1, last);
+    Merge(data, first, half, last);
+  } //if
+    return comps;
+
+} //MergeSortRecurse
+
 int Sorting::MergeSort(int data[], int first, int last) {
-    if (last > first) {
-        int half = first + (last-first)/2;
-        MergeSort(data, first, half);
-        MergeSort(data, half+1, last);
-        Merge(data, first, half, last);
-    }
-    int temp = comps;
-    comps = 0;
-    return temp;
+  int out = MergeSortRecurse(data, first, last);
+  comps = 0;
+  return out;
 } //MergeSort()
 
 void Sorting::Merge(int data[], int first, int half, int last) {
@@ -90,28 +95,36 @@ int Sorting::HeapSort(int data[], int first, int last) {
 } //HeapSort()
 
 int Sorting::QuickSortF(int data[], int first, int last) {
-    if (first < last) {
-        int splitPoint; // pivot
-        splitPoint = SplitF(data, first, last);
-        QuickSortF(data, first, splitPoint-1);
-        QuickSortF(data, splitPoint+1, last);
-    }
-    int temp = comps;
-    comps = 0;
-    return temp;
+  int out = QuickSortFRecurse(data, first, last);
+  comps = 0;
+  return out;
 } //QuickSortF()
 
+int Sorting::QuickSortFRecurse(int data[], int first, int last) {
+  if (first < last) {
+        int splitPoint; // pivot
+        splitPoint = SplitF(data, first, last);
+        QuickSortFRecurse(data, first, splitPoint-1);
+        QuickSortFRecurse(data, splitPoint+1, last);
+  } //if
+  return comps;
+} //QuickSortFRecurse
+
 int Sorting::QuickSortR(int data[], int first, int last) {
-    if (first < last) {
+  int out = QuickSortRRecurse(data, first, last);
+  comps = 0;
+  return out;
+} //QuickSortR()
+
+int Sorting::QuickSortRRecurse(int data[], int first, int last) {
+      if (first < last) {
         int splitPoint; // pivot
         splitPoint = SplitR(data, first, last);
-        QuickSortR(data, first, splitPoint-1);
-        QuickSortR(data, splitPoint+1, last);
-    }
-    int temp = comps;
-    comps = 0;
-    return temp;
-} //QuickSortR()
+        QuickSortRRecurse(data, first, splitPoint-1);
+        QuickSortRRecurse(data, splitPoint+1, last);
+      }
+    return comps;
+} //QuickSortRRecurse
 
 int Sorting::SplitF(int data[], int first, int last) {
     int pivot = data[first];

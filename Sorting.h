@@ -15,6 +15,9 @@ private:
     //helper for mergesort
     void swap(int &num1, int &num2); //swaps the values in num1 and num2 (helper for heapsort and selection sort)
     void heapify(int data[], int first, int last, int current); //Helper for creating heap in array structure (heapsort)
+    int QuickSortRRecurse(int data[], int first, int last); //Recursive method for QuickSortF
+    int QuickSortFRecurse(int data[], int first, int last); //Recursive method for QuickSortR
+    int MergeSortRecurse(int data[], int first, int last); //Recursive method for MergeSort
 public:
     Sorting(); //constructor
   long long int SelecSort(int data[], int fist, int last);

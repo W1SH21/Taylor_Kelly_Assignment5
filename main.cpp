@@ -16,7 +16,6 @@ int main(int argc, char* argv[]) {
     vector<int> dataVec;
     int count = 0;
     while (fin >> num) {
-      data2[count] = num;
       data[count] = num;
       count++;
     }
@@ -33,7 +32,7 @@ int main(int argc, char* argv[]) {
       int calc = sorter.SelecSort(data, first, last);
         for (int count2 = first; count2 <= last; count2++) {
             cout << data[count2] << " ";
-        } // print the sorted array
+	} // print the sorted array
 	cout << endl;
         cout << "#Selection-sort comparisons: " << calc << endl;
     } else if (input == "m") {
@@ -66,5 +65,5 @@ int main(int argc, char* argv[]) {
         cout << endl;
         cout << "#Quick-sort-rp comparisons: " << calc << endl;
     }//if
-    delete[] main;
+    delete[] data;
 } // main
